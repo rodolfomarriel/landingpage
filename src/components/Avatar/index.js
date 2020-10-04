@@ -14,7 +14,8 @@ const Avatar = () => {
       src={Image}
       transitionTime={300}
       transitionFunction='ease'
-      render={(src, style) => <S.AvatarWrapper src={src} style={style} />}
+      render={(src, style) => <S.AvatarWrapper src={src}
+      style={Object.assign(style, { filter: `grayscale(1)` })} />}
     />
   );
 };
