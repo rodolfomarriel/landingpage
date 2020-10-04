@@ -1,17 +1,22 @@
-import React from 'react'
-import Image from '../../images/profile-photo.jpg'
+import React from 'react';
+import Image from '../../images/profile-photo.jpg';
+import ImageResize from '../../images/profile-photo-resize.jpg';
 
-import LazyLoad from 'react-lazy-load';
+// import ProgressiveImage from 'react-progressive-graceful-image';
+import ProgressiveImage from 'react-progressive-image-loading';
 
-import * as S from './styled'
+import * as S from './styled';
 
 const Avatar = () => {
-
   return (
-    <LazyLoad debounce={false} offsetVertical={500}>
-      <S.AvatarWrapper src={Image} />
-    </LazyLoad>
-  )
-}
+    <ProgressiveImage
+      preview={ImageResize}
+      src={Image}
+      transitionTime={300}
+      transitionFunction='ease'
+      render={(src, style) => <S.AvatarWrapper src={src} style={style} />}
+    />
+  );
+};
 
-export default Avatar
+export default Avatar;
